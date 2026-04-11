@@ -1,0 +1,27 @@
+{
+  "wellness_profile": "Recovery & Performance",
+  "recommended_services": [
+    "Red Light Therapy",
+    "Hydrogen Therapy",
+    "TORUS Recovery Session"
+  ],
+  "recommended_products": [
+    "Recovery Stack",
+    "Hydration Support Bundle"
+  ],
+  "recommended_membership": "Performance",
+  "consultation_required": true,
+  "reasons": [
+    "User selected recovery, energy, and stress support as top priorities",
+    "User showed interest in premium guided support"
+  ],
+  "flags": [
+    "staff_followup_recommended"
+  ],
+  "disclaimers": [
+    "This experience is educational and wellness-focused",
+    "Final recommendations may require staff or clinician review"
+  ],
+  "primary_cta": "Book Consultation",
+  "secondary_cta": "Join Performance Membership"
+}
