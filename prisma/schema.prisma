@@ -1,0 +1,382 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserChannel {
+  KIOSK
+  STAFF
+  CLINICIAN
+  ADMIN
+  SUPER_ADMIN
+}
+
+model Tenant {
+  id          String   @id @default(uuid())
+  name        String
+  slug        String   @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  branding    TenantBranding?
+  locations   Location[]
+  kiosks      Kiosk[]
+  users       User[]
+  products    Product[]
+  services    Service[]
+  programs    Program[]
+  memberships Membership[]
+}
+
+model TenantBranding {
+  id        String @id @default(uuid())
+  tenantId  String @unique
+  logoUrl   String?
+  colorHex  String?
+  themeMode String @default("dark")
+  tenant    Tenant @relation(fields: [tenantId], references: [id])
+}
+
+model Location {
+  id        String   @id @default(uuid())
+  tenantId  String
+  name      String
+  type      String
+  timezone  String
+  tenant    Tenant   @relation(fields: [tenantId], references: [id])
+  kiosks    Kiosk[]
+  leads     Lead[]
+  bookings  Booking[]
+}
+
+model Kiosk {
+  id            String   @id @default(uuid())
+  tenantId      String
+  locationId    String
+  deviceSerial  String   @unique
+  name          String
+  status        String   @default("ONLINE")
+  lastHeartbeat DateTime?
+  tenant        Tenant   @relation(fields: [tenantId], references: [id])
+  location      Location @relation(fields: [locationId], references: [id])
+  sessions      KioskSession[]
+}
+
+model KioskSession {
+  id         String   @id @default(uuid())
+  tenantId   String
+  kioskId    String
+  startedAt  DateTime @default(now())
+  endedAt    DateTime?
+  sourceCta  String?
+  channel    UserChannel @default(KIOSK)
+  kiosk      Kiosk    @relation(fields: [kioskId], references: [id])
+}
+
+model User {
+  id           String   @id @default(uuid())
+  tenantId      String
+  email        String
+  passwordHash String
+  firstName    String
+  lastName     String
+  isActive     Boolean  @default(true)
+  tenant       Tenant   @relation(fields: [tenantId], references: [id])
+  userRoles    UserRole[]
+
+  @@unique([tenantId, email])
+}
+
+model Role {
+  id          String @id @default(uuid())
+  tenantId    String
+  code        String
+  name        String
+  permissions Permission[]
+  userRoles   UserRole[]
+
+  @@unique([tenantId, code])
+}
+
+model Permission {
+  id      String @id @default(uuid())
+  code    String @unique
+  name    String
+  roleId  String
+  role    Role   @relation(fields: [roleId], references: [id])
+}
+
+model UserRole {
+  id      String @id @default(uuid())
+  userId  String
+  roleId  String
+  user    User   @relation(fields: [userId], references: [id])
+  role    Role   @relation(fields: [roleId], references: [id])
+}
+
+model ProductCategory {
+  id       String    @id @default(uuid())
+  tenantId String
+  name     String
+  products Product[]
+}
+
+model Product {
+  id               String   @id @default(uuid())
+  tenantId         String
+  categoryId       String?
+  name             String
+  description      String
+  priceCents       Int
+  requiresConsult  Boolean  @default(false)
+  allowedDirectBuy Boolean  @default(true)
+  category         ProductCategory? @relation(fields: [categoryId], references: [id])
+  tenant           Tenant   @relation(fields: [tenantId], references: [id])
+}
+
+model Service {
+  id              String  @id @default(uuid())
+  tenantId        String
+  name            String
+  serviceType     String
+  priceCents      Int
+  requiresConsult Boolean @default(false)
+  tenant          Tenant  @relation(fields: [tenantId], references: [id])
+}
+
+model Program {
+  id          String @id @default(uuid())
+  tenantId    String
+  name        String
+  description String
+  tenant      Tenant @relation(fields: [tenantId], references: [id])
+}
+
+model Membership {
+  id               String @id @default(uuid())
+  tenantId         String
+  tier             String
+  monthlyPriceCents Int
+  annualPriceCents Int
+  includedCredits  Int
+  retailDiscountPct Int
+  treatmentDiscountPct Int
+  salesCopy        String
+  tenant           Tenant @relation(fields: [tenantId], references: [id])
+  benefits         MembershipBenefit[]
+}
+
+model MembershipBenefit {
+  id            String @id @default(uuid())
+  membershipId  String
+  label         String
+  value         String
+  membership    Membership @relation(fields: [membershipId], references: [id])
+}
+
+model PricingRule {
+  id          String  @id @default(uuid())
+  tenantId    String
+  locationId  String?
+  entityType  String
+  entityId    String
+  adjustmentType String
+  adjustmentValue Int
+}
+
+model Questionnaire {
+  id          String  @id @default(uuid())
+  tenantId    String
+  title       String
+  isActive    Boolean @default(true)
+  questions   QuestionnaireQuestion[]
+}
+
+model QuestionnaireQuestion {
+  id              String @id @default(uuid())
+  questionnaireId String
+  key             String
+  label           String
+  type            String
+  orderIndex      Int
+  options         QuestionnaireOption[]
+  questionnaire   Questionnaire @relation(fields: [questionnaireId], references: [id])
+}
+
+model QuestionnaireOption {
+  id         String @id @default(uuid())
+  questionId String
+  label      String
+  value      String
+  question   QuestionnaireQuestion @relation(fields: [questionId], references: [id])
+}
+
+model QuestionnaireResponse {
+  id               String   @id @default(uuid())
+  tenantId         String
+  questionnaireId  String
+  kioskSessionId   String?
+  payload          Json
+  submittedAt      DateTime @default(now())
+}
+
+model RecommendationRule {
+  id          String  @id @default(uuid())
+  tenantId    String
+  name        String
+  priority    Int
+  conditions  Json
+  actions     Json
+  isActive    Boolean @default(true)
+}
+
+model RecommendationResult {
+  id                  String   @id @default(uuid())
+  tenantId            String
+  questionnaireResponseId String
+  wellnessProfile     String
+  payload             Json
+  aiExplanation       String?
+  createdAt           DateTime @default(now())
+}
+
+model Lead {
+  id            String   @id @default(uuid())
+  tenantId      String
+  locationId    String
+  kioskId       String?
+  name          String
+  phone         String?
+  email         String?
+  consent       Boolean
+  preferredContactMethod String?
+  mainGoal      String?
+  budgetInterest String?
+  urgency       String?
+  source        String?
+  recommendationSummary Json?
+  createdAt     DateTime @default(now())
+  location      Location @relation(fields: [locationId], references: [id])
+  leadScore     LeadScore?
+}
+
+model LeadScore {
+  id        String @id @default(uuid())
+  leadId    String @unique
+  score     Int
+  reasons   Json
+  lead      Lead   @relation(fields: [leadId], references: [id])
+}
+
+model Booking {
+  id             String   @id @default(uuid())
+  tenantId       String
+  locationId     String
+  leadId         String?
+  bookingType    String
+  startsAt       DateTime
+  status         String   @default("PENDING")
+  intakeSummary  Json?
+  location       Location @relation(fields: [locationId], references: [id])
+}
+
+model Order {
+  id            String   @id @default(uuid())
+  tenantId      String
+  kioskSessionId String?
+  leadId        String?
+  subtotalCents Int
+  discountCents Int
+  totalCents    Int
+  status        String
+  items         OrderItem[]
+  payments      Payment[]
+}
+
+model OrderItem {
+  id         String @id @default(uuid())
+  orderId    String
+  entityType String
+  entityId   String
+  name       String
+  qty        Int
+  unitPriceCents Int
+  order      Order  @relation(fields: [orderId], references: [id])
+}
+
+model Payment {
+  id               String   @id @default(uuid())
+  tenantId         String
+  orderId          String
+  provider         String
+  providerRef      String?
+  amountCents      Int
+  status           String
+  createdAt        DateTime @default(now())
+  order            Order    @relation(fields: [orderId], references: [id])
+}
+
+model PromoCode {
+  id          String @id @default(uuid())
+  tenantId    String
+  code        String
+  discountType String
+  value       Int
+  active      Boolean @default(true)
+}
+
+model MediaAsset {
+  id         String @id @default(uuid())
+  tenantId   String
+  kind       String
+  url        String
+  mimeType   String
+}
+
+model ConsentRecord {
+  id          String   @id @default(uuid())
+  tenantId    String
+  leadId      String?
+  channel     UserChannel
+  consentType String
+  accepted    Boolean
+  acceptedAt  DateTime @default(now())
+}
+
+model Notification {
+  id          String   @id @default(uuid())
+  tenantId    String
+  channel     String
+  recipient   String
+  templateKey String
+  payload     Json
+  status      String
+  createdAt   DateTime @default(now())
+}
+
+model AuditLog {
+  id          String   @id @default(uuid())
+  tenantId    String
+  actorId     String?
+  actorRole   String?
+  action      String
+  entityType  String
+  entityId    String?
+  before      Json?
+  after       Json?
+  metadata    Json?
+  createdAt   DateTime @default(now())
+}
+
+model FeatureFlag {
+  id          String @id @default(uuid())
+  tenantId    String?
+  key         String
+  enabled     Boolean @default(false)
+  config      Json?
+
+  @@unique([tenantId, key])
+}
