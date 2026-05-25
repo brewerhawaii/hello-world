@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TheLuxStrips.com™ by BioVantix – Premium Peptide Wellness</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ── ANNOUNCEMENT BAR ─────────────────────────────────────────────── -->
+<div class="announcement-bar">
+  <span>FREE SHIPPING ON ALL ORDERS OVER $75</span>
+  <span class="sep">|</span>
+  <span>PREMIUM PEPTIDE WELLNESS, DELIVERED.</span>
+</div>
+
+<!-- ── HEADER ──────────────────────────────────────────────────────── -->
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner">
+    <div class="logo">
+      <span class="logo-main">TheLuxStrips.com<sup>™</sup></span>
+      <span class="logo-sub">by BioVantix</span>
+    </div>
+
+    <ul class="nav-links">
+      <li class="has-dropdown">
+        <a href="#">SHOP <span class="chevron">▾</span></a>
+        <div class="dropdown">
+          <a href="#products">All Products</a>
+          <a href="#products">Bundle &amp; Save</a>
+          <a href="#">Accessories</a>
+        </div>
+      </li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#science">SCIENCE</a></li>
+      <li><a href="#reviews">REVIEWS</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="icon-btn" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+      </button>
+      <button class="icon-btn cart-toggle" aria-label="Cart" id="cartToggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- ── MOBILE NAV ───────────────────────────────────────────────────── -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#products">Shop</a>
+  <a href="#about">About</a>
+  <a href="#science">Science</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#faq">FAQ</a>
+</div>
+
+<!-- ── HERO ────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">PREMIUM PEPTIDE WELLNESS</p>
+    <h1 class="hero-headline">Elevate Every<br>Cell. <em>Every Day.</em></h1>
+    <p class="hero-body">Advanced peptide oral dissolving strips designed for modern performance, longevity and vitality.*</p>
+    <a href="#products" class="btn btn-primary">SHOP NOW →</a>
+    <ul class="hero-badges">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        FAST ACTING
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        HIGH ABSORPTION
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+        PRECISE DOSING
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V9l-6-6z"/><polyline points="9 3 9 9 15 9"/></svg>
+        LAB TESTED
+      </li>
+    </ul>
+  </div>
+  <div class="hero-product">
+    <div class="product-packet thrive-packet">
+      <div class="packet-inner">
+        <p class="packet-brand">TheLuxStrips.com™<br><small>by BioVantix</small></p>
+        <h2 class="packet-name">THRIVE</h2>
+        <p class="packet-type">ORAL DISSOLVING STRIP</p>
+        <p class="packet-flavor">LYCHEE</p>
+        <div class="packet-icons">
+          <span>⚡ FAST<br>ACTING</span>
+          <span>◎ HIGH<br>ABSORB</span>
+          <span>⊕ PRECISE<br>DOSING</span>
+          <span>🧪 LAB<br>TESTED</span>
+        </div>
+        <p class="packet-category">PEPTIDE WELLNESS</p>
+      </div>
+    </div>
+    <div class="hero-fruits">
+      <div class="fruit fruit-1"></div>
+      <div class="fruit fruit-2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ────────────────────────────────────────────────────── -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/><circle cx="12" cy="12" r="3"/></svg>
+    <div><strong>ADVANCED PEPTIDES</strong><p>Clinically studied compounds for real results.</p></div>
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M1.05 12H7M17 12h5.95M12 1.05V7M12 17v5.95"/><path d="M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M19.78 4.22l-4.24 4.24M8.46 15.54l-4.24 4.24"/></svg>
+    <div><strong>MAXIMUM ABSORPTION</strong><p>Sublingual delivery for up to 98% absorption.</p></div>
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <div><strong>DISSOLVES IN SECONDS</strong><p>Convenient, no water needed, on-the-go.</p></div>
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+    <div><strong>FEEL THE DIFFERENCE</strong><p>Formulated to help you look, feel and perform.</p></div>
+  </div>
+</div>
+
+<!-- ── SCIENCE SECTION ─────────────────────────────────────────────── -->
+<section class="science-section" id="science">
+  <div class="science-text">
+    <p class="eyebrow pink">BACKED BY SCIENCE</p>
+    <h2>Wellness at the <em class="pink">Cellular</em> Level</h2>
+    <div class="divider"></div>
+    <p>Our oral dissolving strips use advanced peptide technology to support energy, recovery, metabolic health, anti-aging, and overall cellular performance.*</p>
+    <a href="#about" class="btn btn-outline">LEARN THE SCIENCE →</a>
+  </div>
+  <div class="science-visual">
+    <div class="dna-graphic">
+      <div class="dna-helix"></div>
+    </div>
+    <div class="model-silhouette"></div>
+  </div>
+</section>
+
+<!-- ── PRODUCTS ────────────────────────────────────────────────────── -->
+<section class="products-section" id="products">
+  <p class="eyebrow center">OUR COLLECTION</p>
+  <h2 class="center">Premium <em class="pink">Peptide</em> Strips</h2>
+
+  <div class="products-carousel">
+    <button class="carousel-btn prev" id="prevBtn" aria-label="Previous">&#8249;</button>
+
+    <div class="products-grid" id="productsGrid">
+
+      <!-- THRIVE -->
+      <div class="product-card" data-id="1" data-name="THRIVE – Lychee" data-price="59.99">
+        <div class="product-img thrive-card">
+          <div class="card-packet thrive-packet-sm">
+            <p class="cp-brand">TheLuxStrips.com™</p>
+            <h3 class="cp-name">THRIVE</h3>
+            <p class="cp-type">ORAL DISSOLVING STRIP</p>
+            <p class="cp-flavor">LYCHEE</p>
+            <p class="cp-cat">PEPTIDE WELLNESS</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>THRIVE</h3>
+          <p>Lychee</p>
+          <div class="product-price">$59.99</div>
+          <button class="btn btn-primary add-to-cart" data-id="1" data-name="THRIVE – Lychee" data-price="59.99">SHOP NOW</button>
+        </div>
+      </div>
+
+      <!-- ENERGY -->
+      <div class="product-card" data-id="2" data-name="ENERGY – Blue Raspberry" data-price="59.99">
+        <div class="product-img energy-card">
+          <div class="card-packet energy-packet-sm">
+            <p class="cp-brand">TheLuxStrips.com™</p>
+            <h3 class="cp-name">ENERGY</h3>
+            <p class="cp-type">ORAL DISSOLVING STRIP</p>
+            <p class="cp-flavor">BLUE RASPBERRY</p>
+            <p class="cp-cat">PEPTIDE WELLNESS</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>ENERGY</h3>
+          <p>Blue Raspberry</p>
+          <div class="product-price">$59.99</div>
+          <button class="btn btn-primary add-to-cart" data-id="2" data-name="ENERGY – Blue Raspberry" data-price="59.99">SHOP NOW</button>
+        </div>
+      </div>
+
+      <!-- RESTORE -->
+      <div class="product-card" data-id="3" data-name="RESTORE – Grape" data-price="59.99">
+        <div class="product-img restore-card">
+          <div class="card-packet restore-packet-sm">
+            <p class="cp-brand">TheLuxStrips.com™</p>
+            <h3 class="cp-name">RESTORE</h3>
+            <p class="cp-type">ORAL DISSOLVING STRIP</p>
+            <p class="cp-flavor">GRAPE</p>
+            <p class="cp-cat">PEPTIDE WELLNESS</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>RESTORE</h3>
+          <p>Grape</p>
+          <div class="product-price">$59.99</div>
+          <button class="btn btn-primary add-to-cart" data-id="3" data-name="RESTORE – Grape" data-price="59.99">SHOP NOW</button>
+        </div>
+      </div>
+
+      <!-- FOCUS -->
+      <div class="product-card" data-id="4" data-name="FOCUS – Citrus" data-price="59.99">
+        <div class="product-img focus-card">
+          <div class="card-packet focus-packet-sm">
+            <p class="cp-brand">TheLuxStrips.com™</p>
+            <h3 class="cp-name">FOCUS</h3>
+            <p class="cp-type">ORAL DISSOLVING STRIP</p>
+            <p class="cp-flavor">CITRUS</p>
+            <p class="cp-cat">PEPTIDE WELLNESS</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>FOCUS</h3>
+          <p>Citrus</p>
+          <div class="product-price">$59.99</div>
+          <button class="btn btn-primary add-to-cart" data-id="4" data-name="FOCUS – Citrus" data-price="59.99">SHOP NOW</button>
+        </div>
+      </div>
+
+      <!-- BUNDLE -->
+      <div class="product-card featured" data-id="5" data-name="The Ultimate Bundle (4-Pack)" data-price="199.99">
+        <div class="badge-featured">BEST VALUE</div>
+        <div class="product-img bundle-card">
+          <div class="bundle-packets">
+            <div class="card-packet thrive-packet-sm mini"></div>
+            <div class="card-packet energy-packet-sm mini"></div>
+            <div class="card-packet restore-packet-sm mini"></div>
+            <div class="card-packet focus-packet-sm mini"></div>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>THE ULTIMATE BUNDLE</h3>
+          <p>All 4 Flavors</p>
+          <div class="product-price">
+            <span class="original-price">$239.96</span>
+            $199.99
+          </div>
+          <button class="btn btn-primary add-to-cart" data-id="5" data-name="The Ultimate Bundle (4-Pack)" data-price="199.99">SHOP NOW</button>
+        </div>
+      </div>
+
+    </div><!-- /products-grid -->
+
+    <button class="carousel-btn next" id="nextBtn" aria-label="Next">&#8250;</button>
+  </div>
+</section>
+
+<!-- ── BENEFITS BAR ─────────────────────────────────────────────────── -->
+<div class="benefits-bar">
+  <div class="benefit-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+    <span>SUGAR FREE</span>
+  </div>
+  <div class="benefit-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M8.5 8.5s1.5 1 3.5 1 3.5-1 3.5-1M8.5 15.5s1.5-1 3.5-1 3.5 1 3.5 1"/></svg>
+    <span>GLUTEN FREE</span>
+  </div>
+  <div class="benefit-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+    <span>NON GMO</span>
+  </div>
+  <div class="benefit-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span>THIRD PARTY TESTED</span>
+  </div>
+  <div class="benefit-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+    <span>GMP CERTIFIED</span>
+  </div>
+  <div class="benefit-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>MADE IN USA</span>
+  </div>
+</div>
+
+<!-- ── REVIEWS ─────────────────────────────────────────────────────── -->
+<section class="reviews-section" id="reviews">
+  <p class="eyebrow center">WHAT CUSTOMERS SAY</p>
+  <h2 class="center">Real Results, <em class="pink">Real People</em></h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"I noticed a difference in my energy levels within the first week. The lychee flavor is incredible and they dissolve so fast!"</p>
+      <div class="reviewer">— Sarah M., Verified Buyer</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Finally a supplement that's actually convenient. I take FOCUS every morning and my mental clarity has improved dramatically."</p>
+      <div class="reviewer">— James K., Verified Buyer</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"The RESTORE strips have been a game-changer for my post-workout recovery. Highly recommend the bundle!"</p>
+      <div class="reviewer">— Maria L., Verified Buyer</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ──────────────────────────────────────────────────────────── -->
+<section class="faq-section" id="faq">
+  <p class="eyebrow center">HAVE QUESTIONS?</p>
+  <h2 class="center">Frequently Asked <em class="pink">Questions</em></h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>How do I use the oral dissolving strips?</summary>
+      <p>Simply place one strip on your tongue and let it dissolve completely — usually within 30–60 seconds. No water needed. For best results, take on an empty stomach.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What makes peptide strips different from capsules or powders?</summary>
+      <p>Sublingual delivery bypasses the digestive system, delivering active ingredients directly into the bloodstream for up to 98% absorption — far superior to traditional delivery methods.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Are these products third-party tested?</summary>
+      <p>Yes. Every batch is tested by an independent, accredited laboratory for purity, potency, and safety before it reaches you.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What is your shipping &amp; return policy?</summary>
+      <p>We offer free shipping on all orders over $75. Orders typically ship within 1–2 business days. We offer a 30-day satisfaction guarantee on all products.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ── FOOTER ───────────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-logo">
+      <div class="logo">
+        <span class="logo-main">TheLuxStrips.com<sup>™</sup></span>
+        <span class="logo-sub">by BioVantix</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>SHOP</h4>
+      <a href="#products">All Products</a>
+      <a href="#products">Bundle &amp; Save</a>
+      <a href="#">Accessories</a>
+    </div>
+    <div class="footer-col">
+      <h4>COMPANY</h4>
+      <a href="#about">About Us</a>
+      <a href="#science">Science</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4>SUPPORT</h4>
+      <a href="#">Shipping &amp; Returns</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+    <div class="footer-col newsletter">
+      <h4>JOIN THE LUXURY WELLNESS MOVEMENT</h4>
+      <p>Sign up for exclusive offers and early access.</p>
+      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+        <input type="email" placeholder="Your email" required />
+        <button type="submit" class="btn btn-primary">SUBSCRIBE</button>
+      </form>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.45a8.16 8.16 0 004.77 1.52V7.51a4.85 4.85 0 01-1-.82z"/></svg>
+        </a>
+        <a href="#" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="disclaimer">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease.</p>
+    <p class="copyright">© 2024 BioVantix. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- ── CART DRAWER ──────────────────────────────────────────────────── -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+  <div class="cart-header">
+    <h3>YOUR CART (<span id="drawerCount">0</span>)</h3>
+    <button class="cart-close" id="cartClose" aria-label="Close cart">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <p>Your cart is empty.</p>
+      <a href="#products" class="btn btn-primary" id="cartShopLink">START SHOPPING</a>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <span id="cartSubtotal">$0.00</span>
+    </div>
+    <p class="free-shipping-note" id="freeShippingNote"></p>
+    <button class="btn btn-primary full-width" onclick="handleCheckout()">CHECKOUT →</button>
+    <a href="#products" class="btn btn-outline full-width cart-continue">CONTINUE SHOPPING</a>
+  </div>
+</aside>
+
+<!-- ── TOAST ────────────────────────────────────────────────────────── -->
+<div class="toast" id="toast"></div>
+
+<script src="cart.js"></script>
+</body>
+</html>
