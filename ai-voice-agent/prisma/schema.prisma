@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Prospect {
+  id            String   @id @default(cuid())
+  businessName  String
+  ownerName     String?
+  phone         String
+  email         String?
+  city          String
+  vertical      String
+  rating        Float?
+  reviewCount   Int?
+  reviewSnippet String?
+  painSignals   String?
+  status        String   @default("new")
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  sequences OutreachSequence[]
+  videos    LoomVideo[]
+  client    Client?
+}
+
+model OutreachSequence {
+  id          String    @id @default(cuid())
+  prospectId  String
+  status      String    @default("active")
+  currentStep Int       @default(0)
+  startedAt   DateTime  @default(now())
+  completedAt DateTime?
+
+  prospect Prospect       @relation(fields: [prospectId], references: [id], onDelete: Cascade)
+  touches  OutreachTouch[]
+}
+
+model OutreachTouch {
+  id         String    @id @default(cuid())
+  sequenceId String
+  day        Int
+  channel    String
+  status     String    @default("pending")
+  sentAt     DateTime?
+  content    String?
+  videoUrl   String?
+  subject    String?
+
+  sequence OutreachSequence @relation(fields: [sequenceId], references: [id], onDelete: Cascade)
+}
+
+model VapiAgent {
+  id              String   @id @default(cuid())
+  name            String
+  vapiAssistantId String?
+  businessName    String
+  businessPhone   String?
+  transferPhone   String
+  voiceId         String   @default("adam")
+  systemPrompt    String?
+  status          String   @default("draft")
+  vapiPhoneNumber String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  client Client?
+  calls  AgentCall[]
+}
+
+model Client {
+  id               String    @id @default(cuid())
+  prospectId       String?   @unique
+  agentId          String?   @unique
+  businessName     String
+  ownerName        String
+  phone            String
+  email            String?
+  vertical         String
+  city             String?
+  setupFee         Float     @default(497)
+  monthlyFee       Float     @default(297)
+  emergencyAddon   Boolean   @default(false)
+  status           String    @default("onboarding")
+  callForwardingSet Boolean  @default(false)
+  onboardedAt      DateTime  @default(now())
+  nextBillingDate  DateTime?
+  notes            String?
+
+  prospect Prospect?  @relation(fields: [prospectId], references: [id])
+  agent    VapiAgent? @relation(fields: [agentId], references: [id])
+}
+
+model LoomVideo {
+  id         String   @id @default(cuid())
+  prospectId String?
+  title      String
+  loomUrl    String?
+  status     String   @default("draft")
+  viewCount  Int      @default(0)
+  duration   Int?
+  notes      String?
+  createdAt  DateTime @default(now())
+
+  prospect Prospect? @relation(fields: [prospectId], references: [id], onDelete: SetNull)
+}
+
+model AgentCall {
+  id           String   @id @default(cuid())
+  agentId      String
+  callerName   String?
+  callerPhone  String?
+  callType     String   @default("standard")
+  duration     Int?
+  summary      String?
+  outcome      String?
+  recordingUrl String?
+  createdAt    DateTime @default(now())
+
+  agent VapiAgent @relation(fields: [agentId], references: [id], onDelete: Cascade)
+}
+
+model Settings {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+}
